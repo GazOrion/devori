@@ -254,7 +254,7 @@ export function CookieConsentBanner() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-[80] box-border flex justify-center p-3 sm:p-5"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-[120] box-border flex justify-center p-3 sm:p-5"
       aria-live="polite"
     >
       <div className="pointer-events-auto w-full max-w-[44rem]">
