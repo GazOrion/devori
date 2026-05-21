@@ -41,7 +41,7 @@ export function FluidExpandingGrid({ items }: FluidExpandingGridProps) {
                 src={item.image}
                 alt={item.title}
                 fill
-                unoptimized={item.image.startsWith("/doposle/")}
+                unoptimized={item.image.startsWith("/keyses/")}
                 sizes="(max-width: 1024px) 100vw, 33vw"
                 className={cn(
                   "object-cover transition-all duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]",

@@ -16,8 +16,8 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Убрали разрозненные Excel-таблицы и ручные напоминания, собрали единый рабочий стол отдела продаж.",
     meta: "CRM / UX / Frontend",
-    beforeImage: "/doposle/crm_before.png",
-    afterImage: "/doposle/crm_after.png",
+    beforeImage: "/keyses/crm-before.png",
+    afterImage: "/keyses/crm-after.png",
     shortResult: "+прозрачность продаж",
   },
   {
@@ -26,8 +26,8 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Перевели перегруженную админ-панель в понятную платформу с визуальными сценариями и живой аналитикой.",
     meta: "B2B / Dashboard / Автоматизация",
-    beforeImage: "/doposle/avtomat_before.png",
-    afterImage: "/doposle/avtomat_after.png",
+    beforeImage: "/keyses/avtomat-before.png",
+    afterImage: "/keyses/avtomat-after.png",
     shortResult: "-рутина в операциях",
     imageClassName: "brightness-[1.22] contrast-[1.08] saturate-[1.04]",
   },
@@ -37,8 +37,8 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Из типового каталожного сайта сделали атмосферный premium-лендинг с фокусом на проектах и материалах.",
     meta: "Маркетинг / Web / Premium",
-    beforeImage: "/doposle/interier_before.png",
-    afterImage: "/doposle/interier_after.png",
+    beforeImage: "/keyses/interier-before.png",
+    afterImage: "/keyses/interier-after.png",
     shortResult: "+визуальная ценность",
   },
   {
@@ -47,8 +47,8 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Ушли от перегруженного прайс-агрегатора к чистому и эмоциональному визуалу, где портфолио продаёт услугу.",
     meta: "Бренд / Web / Портфолио",
-    beforeImage: "/doposle/photo-before.png",
-    afterImage: "/doposle/photo-after.png",
+    beforeImage: "/keyses/photo-before.png",
+    afterImage: "/keyses/photo-after.png",
     shortResult: "+целостность бренда",
   },
 ];
@@ -86,8 +86,7 @@ export const portfolioCasesBottom: FluidGridCaseItem[] = [
     title: "B2B CRM для отдела продаж",
     description:
       "Пересобрали воронку, карточки сделок и аналитику так, чтобы менеджеры работали быстрее, а руководители видели узкие места.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    image: "/keyses/b2b-crm.png",
     meta: "CRM / UX / Frontend",
     result: "+37% к скорости обработки лидов",
   },
