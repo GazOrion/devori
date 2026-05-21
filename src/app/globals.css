@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-coolvetica);
+  --font-mono: var(--font-coolvetica);
+  --font-heading: var(--font-coolvetica);
+  --font-display: var(--font-coolvetica);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-devori-dark: #07030f;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
+  @keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+    }
+  }
+  --radius-none: 0px;
+  --radius-xs: 0.125rem;
+  --radius-default: 0.375rem;
+  --radius-full: 9999px;
+  --color-button-ripple-color: var(----button-ripple-color)
+}
+
+/* Глобальное имя для inline animation в Marquee (keyframes внутри @theme не видны как «marquee»). */
+@keyframes devori-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Блик кнопки: синхронно с Tailwind before:bg-position (два слоя). */
+@keyframes devori-shine-sweep {
+  0% {
+    background-position: 200% 0, 0 0;
+  }
+  100% {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+/* Обводка Magic UI–стиля: движущийся radial по периметру (ShineBorder). */
+@keyframes shine-pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 300%;
+  }
+}
+
+/* Лёгкое «дыхание» фона тарифов — без WebGL, в тон hero. */
+@keyframes hero-prism-drift {
+  0%,
+  100% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.hero-prism-bg {
+  transform-origin: center;
+  animation: hero-prism-drift 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-prism-bg {
+    animation: none;
+  }
+}
+
+:root {
+  --background: oklch(0.13 0.01 260);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.17 0.014 255 / 72%);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.16 0.012 255);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.74 0.12 244);
+  --primary-foreground: oklch(0.1 0.01 260);
+  --secondary: oklch(0.22 0.014 252);
+  --secondary-foreground: oklch(0.95 0.01 250);
+  --muted: oklch(0.19 0.012 256 / 70%);
+  --muted-foreground: oklch(0.75 0.02 250);
+  --accent: oklch(0.87 0.02 250);
+  --accent-foreground: oklch(0.11 0.01 260);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.74 0.12 244);
+  --chart-1: oklch(0.74 0.12 244);
+  --chart-2: oklch(0.9 0.015 250);
+  --chart-3: oklch(0.62 0.08 230);
+  --chart-4: oklch(0.46 0.05 255);
+  --chart-5: oklch(0.31 0.03 255);
+  --radius: 1.5rem;
+  --sidebar: oklch(0.15 0.012 255);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.74 0.12 244);
+  --sidebar-primary-foreground: oklch(0.1 0.01 260);
+  --sidebar-accent: oklch(0.2 0.014 255);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.74 0.12 244);
+  --font-sans: var(--font-coolvetica);
+  --font-display: var(--font-coolvetica);
+  --font-heading: var(--font-coolvetica);
+  --font-heading-letter-spacing: 0.01em;
+  --font-mono: var(--font-coolvetica);
+  --button-ripple-color: oklch(0.145 0 0 / 0.3);
+}
+
+.dark {
+  --background: oklch(0.13 0.01 260);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.17 0.014 255 / 72%);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.16 0.012 255);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.74 0.12 244);
+  --primary-foreground: oklch(0.1 0.01 260);
+  --secondary: oklch(0.22 0.014 252);
+  --secondary-foreground: oklch(0.95 0.01 250);
+  --muted: oklch(0.19 0.012 256 / 70%);
+  --muted-foreground: oklch(0.75 0.02 250);
+  --accent: oklch(0.87 0.02 250);
+  --accent-foreground: oklch(0.11 0.01 260);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.74 0.12 244);
+  --chart-1: oklch(0.74 0.12 244);
+  --chart-2: oklch(0.9 0.015 250);
+  --chart-3: oklch(0.62 0.08 230);
+  --chart-4: oklch(0.46 0.05 255);
+  --chart-5: oklch(0.31 0.03 255);
+  --sidebar: oklch(0.15 0.012 255);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.74 0.12 244);
+  --sidebar-primary-foreground: oklch(0.1 0.01 260);
+  --sidebar-accent: oklch(0.2 0.014 255);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.74 0.12 244);
+  --button-ripple-color: oklch(0.985 0 0 / 0.5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  .font-heading,
+  .font-display {
+    letter-spacing: var(--font-heading-letter-spacing);
+  }
+
+  html {
+    @apply bg-background font-sans text-foreground;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground;
+  }
+
+  button,
+  input,
+  textarea,
+  select,
+  optgroup,
+  legend {
+    font: inherit;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 70%, white);
+    color: var(--foreground);
+  }
+}
+
+@keyframes service-card-image-hover {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .service-card-image-wrap {
+    animation: service-card-image-hover 0.7s ease-in-out forwards;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+}

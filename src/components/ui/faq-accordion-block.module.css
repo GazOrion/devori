@@ -1,0 +1,125 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .list {
+    gap: 1.5rem;
+  }
+}
+
+.glassItem {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgb(7 17 31 / 0.1);
+  border-radius: 1.5rem;
+  background: #e6edf6;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  transition: all 0.6s cubic-bezier(0, 0, 0, 1.15);
+  box-shadow:
+    0 12px 32px rgb(7 17 31 / 0.06),
+    inset -1px -4px 16px rgb(255 255 255 / 0.45),
+    inset 1px 4px 16px rgb(7 17 31 / 0.05),
+    inset 1px 1px rgb(255 255 255 / 0.5);
+}
+
+@media (min-width: 768px) {
+  .glassItem {
+    border-radius: 2.5rem;
+  }
+}
+
+.item {
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .item {
+    padding: 1.25rem 2rem;
+  }
+}
+
+.titleBox {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.title {
+  margin: 0;
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #07111f;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: clamp(1.05rem, 1.25vw, 1.35rem);
+  }
+}
+
+.titleButton {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  color: rgb(7 17 31 / 0.55);
+  transition: transform 0.3s ease;
+}
+
+.open .titleButton {
+  transform: rotate(180deg);
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  padding-top: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  transition:
+    max-height 0.6s cubic-bezier(0, 0, 0, 1.15),
+    padding-top 0.3s ease-out 0.3s;
+}
+
+@media (min-width: 768px) {
+  .textBox {
+    font-size: clamp(0.95rem, 0.94vw, 1.05rem);
+    line-height: 1.2;
+  }
+}
+
+.open .textBox {
+  max-height: 600px;
+  transition:
+    max-height 0.4s ease-in,
+    padding-top 0.3s ease-in;
+}
+
+.textBoxContent {
+  padding-top: 1rem;
+}
+
+.answer {
+  margin: 0;
+  color: rgb(7 17 31 / 0.72);
+}
