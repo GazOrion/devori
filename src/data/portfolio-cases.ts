@@ -3,8 +3,7 @@ export type PortfolioCase = {
   title: string;
   description: string;
   meta: string;
-  beforeImage: string;
-  afterImage: string;
+  image: string;
   shortResult: string;
   imageClassName?: string;
 };
@@ -16,8 +15,7 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Убрали разрозненные Excel-таблицы и ручные напоминания, собрали единый рабочий стол отдела продаж.",
     meta: "CRM / UX / Frontend",
-    beforeImage: "/keyses/crm-before.png",
-    afterImage: "/keyses/crm-after.png",
+    image: "/keyses/crm-after.webp",
     shortResult: "+прозрачность продаж",
   },
   {
@@ -26,8 +24,7 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Перевели перегруженную админ-панель в понятную платформу с визуальными сценариями и живой аналитикой.",
     meta: "B2B / Dashboard / Автоматизация",
-    beforeImage: "/keyses/avtomat-before.png",
-    afterImage: "/keyses/avtomat-after.png",
+    image: "/keyses/avtomat-after.webp",
     shortResult: "-рутина в операциях",
     imageClassName: "brightness-[1.22] contrast-[1.08] saturate-[1.04]",
   },
@@ -37,8 +34,7 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Из типового каталожного сайта сделали атмосферный premium-лендинг с фокусом на проектах и материалах.",
     meta: "Маркетинг / Web / Premium",
-    beforeImage: "/keyses/interier-before.png",
-    afterImage: "/keyses/interier-after.png",
+    image: "/keyses/interier-after.webp",
     shortResult: "+визуальная ценность",
   },
   {
@@ -47,8 +43,7 @@ export const portfolioCases: PortfolioCase[] = [
     description:
       "Ушли от перегруженного прайс-агрегатора к чистому и эмоциональному визуалу, где портфолио продаёт услугу.",
     meta: "Бренд / Web / Портфолио",
-    beforeImage: "/keyses/photo-before.png",
-    afterImage: "/keyses/photo-after.png",
+    image: "/keyses/photo-after_csecollege.webp",
     shortResult: "+целостность бренда",
   },
 ];
@@ -68,7 +63,7 @@ export function toFluidGridCases(cases: PortfolioCase[]): FluidGridCaseItem[] {
     id: item.id,
     title: item.title,
     description: item.description,
-    image: item.afterImage,
+    image: item.image,
     meta: item.meta,
     result: item.shortResult,
     imageClassName: item.imageClassName,
@@ -86,7 +81,7 @@ export const portfolioCasesBottom: FluidGridCaseItem[] = [
     title: "B2B CRM для отдела продаж",
     description:
       "Пересобрали воронку, карточки сделок и аналитику так, чтобы менеджеры работали быстрее, а руководители видели узкие места.",
-    image: "/keyses/b2b-crm.png",
+    image: "/keyses/b2b-crm.webp",
     meta: "CRM / UX / Frontend",
     result: "+37% к скорости обработки лидов",
   },
