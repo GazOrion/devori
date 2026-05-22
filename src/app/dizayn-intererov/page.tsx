@@ -6,15 +6,13 @@ import { absoluteUrl } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Дизайн интерьеров — devori",
-  description:
-    "Новое направление devori: дизайн жилых и коммерческих интерьеров. Раздел в разработке — скоро презентация услуг и кейсы.",
+  description: "Раздел дизайна интерьеров devori — в разработке.",
   alternates: {
     canonical: absoluteUrl("/dizayn-intererov"),
   },
   openGraph: {
     title: "Дизайн интерьеров — devori",
-    description:
-      "devori открывает направление дизайна интерьеров. Презентация и портфолио — в разработке.",
+    description: "Раздел дизайна интерьеров devori — в разработке.",
     url: absoluteUrl("/dizayn-intererov"),
     type: "website",
   },
