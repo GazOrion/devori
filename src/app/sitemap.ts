@@ -10,6 +10,7 @@ function getChangeFrequency(pathname: string): MetadataRoute.Sitemap[number]["ch
 
 function getPriority(pathname: string): number {
   if (pathname === "/") return 1;
+  if (pathname === "/dizayn-intererov") return 0.85;
   return 0.7;
 }
 

@@ -8,6 +8,7 @@ import {
 } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import sectionHeading from "@/components/ui/section-heading.module.css";
 import { cn } from "@/lib/utils";
 
 type ProcessItem = {
@@ -457,7 +458,9 @@ export function ProcessScrollCards({ items }: ProcessScrollCardsProps) {
 
   return (
     <div ref={sectionRef} className="relative flex w-full min-w-0 flex-col">
-      <h2 className="mb-10 w-full text-[2.5rem] font-heading leading-[0.95] text-white sm:mb-12 sm:text-[3.2rem]">
+      <h2
+        className={`mb-10 w-full font-heading sm:mb-12 ${sectionHeading.heading} ${sectionHeading.dark}`}
+      >
         Как мы работаем
       </h2>
 

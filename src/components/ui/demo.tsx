@@ -26,6 +26,9 @@ import { TeamMarqueeSection } from "@/components/ui/team-marquee-section";
 import { teamMembers } from "@/data/team-members";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { BusinessTasksSection } from "@/components/ui/business-tasks-section";
+import { SectionGradientDivider } from "@/components/ui/section-gradient-divider";
+import sectionHeading from "@/components/ui/section-heading.module.css";
 import { ProductValueSection } from "@/components/ui/product-value-section";
 import { CtaRevealButton } from "@/components/ui/cta-reveal-button";
 import { ShineHover } from "@/components/ui/shine-hover";
@@ -269,16 +272,23 @@ function DemoOneContent() {
         ]}
         navItems={[
           { id: "services", label: "Услуги", href: "#services" },
+          {
+            id: "interiors",
+            label: "Дизайн интерьеров",
+            href: "/dizayn-intererov",
+            badge: "new",
+            separate: true,
+          },
           { id: "formats", label: "Форматы", href: "#formats" },
           { id: "cases", label: "Кейсы", href: "#cases" },
           { id: "testimonials", label: "Отзывы", href: "#testimonials" },
         ]}
       />
 
-      <div className="relative z-30 -mt-24 overflow-x-hidden overflow-y-visible rounded-t-[3.25rem] bg-[#d8dde5] pt-0 pb-0">
+      <div className="relative z-30 -mt-24 overflow-x-hidden overflow-y-visible rounded-t-[3.25rem] bg-[#d8dde5] pb-0 pt-0 md:-mt-32">
         <section id="services" className="relative z-10 w-full rounded-[3.25rem] bg-[#f4f7ff]">
           <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
-            <h2 className="max-w-[46rem] text-[2.5rem] font-heading leading-[0.95] text-[#07111f] sm:text-[3.4rem]">
+            <h2 className={`max-w-[46rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
               Услуги и направления
             </h2>
             <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:items-stretch lg:gap-5">
@@ -289,11 +299,15 @@ function DemoOneContent() {
           </ScrollReveal>
         </section>
 
+        <BusinessTasksSection />
+
+        <SectionGradientDivider className="-mt-16" />
+
         <ProductValueSection />
 
         <section id="formats" className="relative z-30 -mt-24 w-full rounded-[3.25rem] bg-[#f4f7fb]">
           <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
-              <h2 className="max-w-[56rem] text-[2.5rem] font-heading leading-[0.94] text-[#081123] sm:text-[3.15rem]">
+              <h2 className={`max-w-[56rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
                 Подбираем формат работы под срок, бюджет и степень неопределённости
               </h2>
               <p className="mt-5 max-w-[50rem] text-[1.04rem] leading-relaxed text-[#3e4d66]">
@@ -309,7 +323,7 @@ function DemoOneContent() {
               />
 
               <div
-                className="mt-8 rounded-[1.4rem] border border-[#dbe5f4] bg-white px-6 py-5 transition-opacity duration-300 sm:px-7 sm:py-6"
+                className="mt-8 hidden rounded-[1.4rem] border border-[#dbe5f4] bg-white px-6 py-5 transition-opacity duration-300 sm:px-7 sm:py-6 lg:block"
                 aria-live="polite"
               >
                 <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(16rem,22rem)_1fr] lg:items-start lg:gap-x-10">
@@ -436,7 +450,7 @@ function DemoOneContent() {
 
         <section id="cases" className="relative z-40 -mt-24 w-full rounded-[3.25rem] bg-devori-dark">
           <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
-            <h2 className="max-w-[46rem] text-[2.5rem] font-heading leading-[0.95] text-white sm:text-[3.4rem]">
+            <h2 className={`max-w-[46rem] font-heading ${sectionHeading.heading} ${sectionHeading.dark}`}>
               Показываем не просто красивый интерфейс, а то, как он работает на результат
             </h2>
             <div className="mt-10 flex flex-col gap-4">
@@ -455,7 +469,7 @@ function DemoOneContent() {
               <div className="max-w-[46rem]">
                 <h2
                   id="cases-cta-heading"
-                  className="text-[2.5rem] font-heading leading-[0.95] text-[#07111f] sm:text-[3.4rem]"
+                  className={`font-heading ${sectionHeading.heading} ${sectionHeading.light}`}
                 >
                   Хотите улучшить свой продукт или создать новый?
                 </h2>
@@ -503,7 +517,7 @@ function DemoOneContent() {
 
         <section className="relative z-[70] -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]">
           <ScrollReveal className="mx-auto w-full max-w-[1200px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
-            <h2 className="max-w-[48rem] text-[2.5rem] font-heading leading-[0.95] text-[#07111f] sm:text-[3.2rem]">
+            <h2 className={`max-w-[48rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
               Ответы на вопросы, которые чаще всего возникают до старта проекта
             </h2>
             <div className="mt-10">
@@ -517,53 +531,51 @@ function DemoOneContent() {
         id="contact"
         className="relative z-[90] -mt-24 w-full overflow-hidden rounded-t-[3.25rem] bg-devori-dark"
       >
-          <div
-            className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-            aria-hidden
-          >
-            <div
-              className="absolute top-0 right-0 h-[148%] w-[min(100%,100vw,1320px)] -translate-x-[11vw] sm:h-[152%] sm:w-[min(100%,98vw,1650px)] sm:-translate-x-[13vw] lg:w-[min(100%,96vw,1920px)] lg:-translate-x-[15vw]"
-            >
-              <div className="absolute inset-y-0 right-0 left-0">
-                <div className="relative h-full w-full">
-                  <Image
-                    src="/footerimg.png"
-                    alt=""
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 1920px"
-                    className="object-contain object-right object-bottom origin-bottom-right scale-[0.76] -translate-y-28 sm:scale-[0.74] sm:-translate-y-40 lg:-translate-y-48"
-                    quality={95}
-                  />
-                </div>
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          aria-hidden
+        >
+          <div className="absolute top-0 right-0 h-[148%] w-[min(100%,100vw,1320px)] -translate-x-[7vw] sm:h-[152%] sm:w-[min(100%,98vw,1650px)] sm:-translate-x-[9vw] lg:w-[min(100%,96vw,1920px)] lg:-translate-x-[11vw]">
+            <div className="absolute inset-y-0 right-0 left-0">
+              <div className="relative h-full w-full">
+                <Image
+                  src="/footerimg.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 1920px"
+                  className="origin-bottom-right scale-[0.76] object-contain object-right object-bottom -translate-y-28 sm:scale-[0.74] sm:-translate-y-40 lg:-translate-y-48"
+                  quality={95}
+                />
               </div>
             </div>
           </div>
+        </div>
 
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[92%] bg-gradient-to-r from-devori-dark from-45% via-devori-dark/75 to-transparent sm:w-[78%] sm:from-40% md:w-[68%]"
-            aria-hidden
-          />
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[92%] bg-gradient-to-r from-devori-dark from-45% via-devori-dark/75 to-transparent sm:w-[78%] sm:from-40% md:w-[68%]"
+          aria-hidden
+        />
 
-          <ScrollReveal className="relative z-10 mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-12 md:px-[6vw] lg:px-[7vw]">
-            <div className="max-w-[38rem]">
-              <h2 className="text-[2.4rem] font-heading leading-[0.95] text-white sm:text-[3.2rem]">
-                Расскажите нам о вашей задаче — мы придумаем решение, которое вам понравится
-              </h2>
+        <ScrollReveal className="relative z-10 mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-12 md:px-[6vw] lg:px-[7vw]">
+          <div className="max-w-[38rem]">
+            <h2 className={`font-heading ${sectionHeading.heading} ${sectionHeading.dark}`}>
+              Расскажите нам о вашей задаче — мы придумаем решение, которое вам понравится
+            </h2>
 
-              <div className="mt-9">
-                <ShineHover
-                  href="#contact"
-                  onClick={openFooterContact}
-                  className="inline-flex min-w-[15rem] shrink-0 items-center justify-center rounded-full border-0 bg-[#66B3FF] px-10 py-3.5 text-base font-semibold text-white shadow-none transition-colors duration-200 ease-out outline-none hover:bg-[#7abefa] focus-visible:ring-2 focus-visible:ring-[#66B3FF] focus-visible:ring-offset-2 focus-visible:ring-offset-devori-dark sm:min-w-[17rem] sm:px-12 sm:py-4 sm:text-lg"
-                >
-                  <span className="inline-flex items-center gap-3">
-                    Связаться
-                    <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
-                  </span>
-                </ShineHover>
-              </div>
+            <div className="mt-9">
+              <ShineHover
+                href="#contact"
+                onClick={openFooterContact}
+                className="inline-flex min-w-[15rem] shrink-0 items-center justify-center rounded-full border-0 bg-[#66B3FF] px-10 py-3.5 text-base font-semibold text-white shadow-none transition-colors duration-200 ease-out outline-none hover:bg-[#7abefa] focus-visible:ring-2 focus-visible:ring-[#66B3FF] focus-visible:ring-offset-2 focus-visible:ring-offset-devori-dark sm:min-w-[17rem] sm:px-12 sm:py-4 sm:text-lg"
+              >
+                <span className="inline-flex items-center gap-3">
+                  Связаться
+                  <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
+                </span>
+              </ShineHover>
             </div>
-          </ScrollReveal>
+          </div>
+        </ScrollReveal>
       </section>
 
       <SiteFooter />

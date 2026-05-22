@@ -17,6 +17,7 @@ import {
 import { useContactCtaHandler } from "@/components/ui/contact-modal-context";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { ShineBorder } from "@/components/ui/shine-border";
+import sectionHeading from "@/components/ui/section-heading.module.css";
 
 const accent = "text-[#5eb0ff]";
 
@@ -99,7 +100,7 @@ export function ProductValueSection() {
           <div className="min-w-0 lg:min-h-0">
             <h2
               id="product-value-heading"
-              className="max-w-[56rem] font-heading text-[2.5rem] leading-[0.95] text-white sm:text-[3.4rem]"
+              className={`max-w-[56rem] font-heading ${sectionHeading.heading} ${sectionHeading.dark}`}
             >
               Берём продукт в работу так, чтобы он приносил{" "}
               <span className={accent}>результат</span>, а не создавал хаос

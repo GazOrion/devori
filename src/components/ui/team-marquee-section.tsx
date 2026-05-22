@@ -5,6 +5,7 @@ import Image from "next/image";
 import { DraggableMarquee } from "@/components/ui/marquee";
 import { LatinText } from "@/components/ui/latin-text";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import sectionHeading from "@/components/ui/section-heading.module.css";
 
 export type TeamMarqueeMember = {
   name: string;
@@ -22,7 +23,7 @@ export function TeamMarqueeSection({ members }: TeamMarqueeSectionProps) {
   return (
     <ScrollReveal className="relative flex w-full flex-col gap-12 md:gap-14">
       <div className="mx-auto flex w-full max-w-[54rem] flex-col items-center px-1 text-center">
-        <h2 className="font-heading text-[2.4rem] leading-[0.95] text-[#07111f] sm:text-[3.1rem]">
+        <h2 className={`font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
           Кто будет трудиться над вашим проектом
         </h2>
       </div>
@@ -46,7 +47,7 @@ export function TeamMarqueeSection({ members }: TeamMarqueeSectionProps) {
                     unoptimized
                     draggable={false}
                     sizes="(max-width: 640px) 280px, 512px"
-                    className="pointer-events-none object-cover object-top grayscale select-none group-hover/card:grayscale-0 group-hover/card:scale-[1.02] transition-transform duration-500 ease-out [-webkit-user-drag:none] [backface-visibility:hidden] [transform:translateZ(0)]"
+                    className="pointer-events-none object-cover object-top grayscale-0 select-none md:grayscale md:group-hover/card:grayscale-0 group-hover/card:scale-[1.02] transition-[filter,transform] duration-500 ease-out [-webkit-user-drag:none] [backface-visibility:hidden] [transform:translateZ(0)]"
                   />
                   <div
                     className="absolute inset-0 z-[1]"

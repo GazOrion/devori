@@ -1,5 +1,6 @@
 import { Quote } from "lucide-react";
 
+import sectionHeading from "@/components/ui/section-heading.module.css";
 import { cn } from "@/lib/utils";
 
 export type Testimonial = {
@@ -22,8 +23,9 @@ export function TestimonialsSection({ items, variant = "light" }: TestimonialsSe
     <>
       <h2
         className={cn(
-          "max-w-[48rem] text-[2.5rem] font-heading leading-[0.95] sm:text-[3.2rem]",
-          isDark ? "text-white" : "text-[#07111f]",
+          "max-w-[48rem] font-heading",
+          sectionHeading.heading,
+          isDark ? sectionHeading.dark : sectionHeading.light,
         )}
       >
         Что говорят партнёры после запуска и сопровождения продуктов

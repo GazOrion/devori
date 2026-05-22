@@ -1,0 +1,164 @@
+/* SimpleGlassContainer forBlackBg + TechnologyItem itemBox (RocketDev), unified tile color on dark bg */
+
+.section {
+  background-color: #07030f;
+}
+
+.rows {
+  --task-gap: 0.75rem;
+  --task-pill-min: 9.25rem;
+  --task-short-width: 5.25rem;
+  --task-brick-shift: calc((var(--task-short-width) + var(--task-gap)) / 2);
+
+  container-type: inline-size;
+  container-name: task-rows;
+
+  margin-top: 2.5rem;
+  margin-inline: auto;
+  display: flex;
+  width: 100%;
+  max-width: 76rem;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--task-gap);
+}
+
+@media screen and (min-width: 768px) {
+  .rows {
+    --task-gap: 0.875rem;
+    --task-pill-min: 10.75rem;
+    --task-short-width: 6.25rem;
+
+    margin-top: 3rem;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--task-gap);
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+@container task-rows (min-width: 68rem) {
+  .row:nth-child(even) {
+    transform: translateX(var(--task-brick-shift));
+  }
+
+  .row:nth-child(2) {
+    transform: translateX(calc(var(--task-brick-shift) - clamp(2.75rem, 9vw, 6rem)));
+  }
+
+  .row:nth-child(4) {
+    transform: translateX(calc(var(--task-brick-shift) - clamp(1rem, 3vw, 2rem)));
+  }
+}
+
+@container task-rows (max-width: 67.999rem) {
+  .tileLabel {
+    white-space: normal;
+  }
+}
+
+.tile {
+  position: relative;
+  z-index: 0;
+  flex: 0 1 auto;
+  max-width: 100%;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 8px 8px 24px rgba(23, 23, 23, 0.4),
+    inset -8px -8px 24px rgba(255, 255, 255, 0.04),
+    inset 1px 1px rgba(255, 255, 255, 0.24),
+    inset 0 0 5px rgba(255, 255, 255, 0.24);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .tile {
+    border-radius: 2.5rem;
+  }
+}
+
+.tileClickable {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .tileClickable:hover {
+    background-color: #66b3ff;
+    box-shadow: none;
+  }
+
+  .tileClickable:hover .tileLabel {
+    color: #fff;
+  }
+}
+
+.tileLabel {
+  display: flex;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(100%, 22rem);
+  min-width: min(var(--task-pill-min), 100%);
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.25rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: rgba(244, 248, 255, 0.92);
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .tileLabel {
+    min-height: 3.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+}
+
+.tileLabelCompact {
+  width: var(--task-short-width);
+  min-width: var(--task-short-width);
+  max-width: var(--task-short-width);
+  padding-inline: 0.625rem;
+  font-size: 0.8125rem;
+}
+
+@media screen and (min-width: 768px) {
+  .tileLabelCompact {
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+.footerNote {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(244, 248, 255, 0.55);
+}
+
+@media screen and (min-width: 768px) {
+  .footerNote {
+    margin-top: 2.5rem;
+    font-size: 1.05rem;
+  }
+}

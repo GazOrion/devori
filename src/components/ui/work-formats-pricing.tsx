@@ -81,6 +81,7 @@ function WorkFormatCard({
       className={cn(
         "relative box-border flex h-full w-full flex-col rounded-2xl border-2 p-8 text-left backdrop-blur-sm",
         "bg-white/70 shadow-lg transition-[border-color,box-shadow,ring-color] duration-300",
+        plan.isPopular && "order-first lg:order-none",
         isSide && "lg:min-h-0",
         isCenter && isDesktop && "z-[2] lg:-translate-y-5",
         isSelected
