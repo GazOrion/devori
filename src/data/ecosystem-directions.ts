@@ -29,7 +29,7 @@ const CARD_META: Record<
     icon: GraduationCap,
   },
   shop: {
-    description: "Газово-промышленное оборудование для дома и бизнеса",
+    description: "Газово-промышленное оборудование и производственные услуги",
     icon: Gauge,
   },
 };
