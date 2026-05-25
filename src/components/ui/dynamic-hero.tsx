@@ -14,6 +14,8 @@ import { shineHoverClassName } from "@/components/ui/shine-hover";
 import { cn } from "@/lib/utils";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { isContactHref, useContactModal } from "@/components/ui/contact-modal-context";
+import { handleInPageAnchorClick } from "@/lib/smooth-scroll";
+import { zFloating } from "@/lib/layer-z-index";
 
 type NavItem = {
   id: string;
@@ -106,7 +108,9 @@ export function HeroSection({
     if (isContactHref(item.href)) {
       event.preventDefault();
       openContactModal();
+      return;
     }
+    handleInPageAnchorClick(event, item.href);
   };
 
   const renderSeparateNavLink = (item: NavItem, className?: string) => (
@@ -247,7 +251,10 @@ export function HeroSection({
 
       <nav
         ref={navRef}
-        className="sticky top-0 z-[100] mx-auto flex w-full max-w-[1840px] items-center justify-between gap-4 border-b border-white/15 px-[3.2vw] py-4 md:gap-6 md:px-[4vw] md:py-5 lg:px-[4.6vw] relative"
+        className={cn(
+          "sticky top-0 mx-auto flex w-full max-w-[1840px] items-center justify-between gap-4 border-b border-white/15 px-[3.2vw] py-4 md:gap-6 md:px-[4vw] md:py-5 lg:px-[4.6vw] relative",
+          zFloating.header,
+        )}
       >
         <div className="flex min-w-0 shrink items-center gap-3">
           <a
@@ -416,6 +423,7 @@ export function HeroSection({
 
             <a
               href="#cases"
+              onClick={(event) => handleInPageAnchorClick(event, "#cases")}
               className="inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-10 py-5 text-center text-lg font-medium text-white/90 backdrop-blur transition hover:border-white/25 hover:bg-white/10 sm:w-auto sm:px-12 sm:py-5 sm:text-xl"
             >
               {secondaryButtonText}

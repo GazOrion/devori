@@ -220,6 +220,17 @@
   html {
     @apply bg-background font-sans text-foreground;
     scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
   }
 
   body {

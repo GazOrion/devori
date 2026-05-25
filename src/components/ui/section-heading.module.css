@@ -25,3 +25,14 @@
   max-width: 52rem;
   text-align: center;
 }
+
+/* Светлая секция после тёмной с -mt-24: больше воздуха у заголовка */
+.lightOverlapTop {
+  padding-top: 9rem;
+}
+
+@media screen and (min-width: 768px) {
+  .lightOverlapTop {
+    padding-top: 10.5rem;
+  }
+}

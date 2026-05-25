@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { CallbackModal } from "@/components/ui/callback-modal";
 import { ContactModal } from "@/components/ui/contact-modal";
 
 export const CONTACT_HREF = "#contact";
@@ -19,7 +20,7 @@ export function isContactHref(href?: string) {
   return href === CONTACT_HREF || href === undefined || href === "";
 }
 
-type ContactModalControl = {
+type ModalControl = {
   open: () => void;
   close: () => void;
 };
@@ -27,6 +28,8 @@ type ContactModalControl = {
 type ContactModalApi = {
   openContactModal: () => void;
   closeContactModal: () => void;
+  openCallbackModal: () => void;
+  closeCallbackModal: () => void;
 };
 
 const ContactModalContext = createContext<ContactModalApi | null>(null);
@@ -34,7 +37,7 @@ const ContactModalContext = createContext<ContactModalApi | null>(null);
 function ContactModalGate({
   controlRef,
 }: {
-  controlRef: React.RefObject<ContactModalControl | null>;
+  controlRef: React.RefObject<ModalControl | null>;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -52,13 +55,37 @@ function ContactModalGate({
   return <ContactModal open={open} onClose={() => setOpen(false)} />;
 }
 
+function CallbackModalGate({
+  controlRef,
+}: {
+  controlRef: React.RefObject<ModalControl | null>;
+}) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    controlRef.current = {
+      open: () => setOpen(true),
+      close: () => setOpen(false),
+    };
+
+    return () => {
+      controlRef.current = null;
+    };
+  }, [controlRef]);
+
+  return <CallbackModal open={open} onClose={() => setOpen(false)} />;
+}
+
 export function ContactModalProvider({ children }: { children: ReactNode }) {
-  const controlRef = useRef<ContactModalControl | null>(null);
+  const contactRef = useRef<ModalControl | null>(null);
+  const callbackRef = useRef<ModalControl | null>(null);
 
   const api = useMemo<ContactModalApi>(
     () => ({
-      openContactModal: () => controlRef.current?.open(),
-      closeContactModal: () => controlRef.current?.close(),
+      openContactModal: () => contactRef.current?.open(),
+      closeContactModal: () => contactRef.current?.close(),
+      openCallbackModal: () => callbackRef.current?.open(),
+      closeCallbackModal: () => callbackRef.current?.close(),
     }),
     [],
   );
@@ -66,7 +93,8 @@ export function ContactModalProvider({ children }: { children: ReactNode }) {
   return (
     <ContactModalContext.Provider value={api}>
       {children}
-      <ContactModalGate controlRef={controlRef} />
+      <ContactModalGate controlRef={contactRef} />
+      <CallbackModalGate controlRef={callbackRef} />
     </ContactModalContext.Provider>
   );
 }

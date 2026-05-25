@@ -1,3 +1,4 @@
+import { zSection } from "@/lib/layer-z-index";
 import { cn } from "@/lib/utils";
 
 type SectionGradientDividerProps = {
@@ -8,7 +9,7 @@ export function SectionGradientDivider({ className }: SectionGradientDividerProp
   return (
     <div
       className={cn(
-        "relative z-[25] flex w-full justify-center bg-[#07030f] py-10",
+        `relative ${zSection.gradientDivider} flex w-full justify-center bg-[#07030f] py-10`,
         className,
       )}
       aria-hidden

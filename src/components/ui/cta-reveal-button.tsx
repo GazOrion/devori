@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { isContactHref, useContactCtaHandler } from "@/components/ui/contact-modal-context";
+import { handleInPageAnchorClick } from "@/lib/smooth-scroll";
 import { cn } from "@/lib/utils";
 
 type CtaRevealButtonProps = {
@@ -88,7 +89,12 @@ export function CtaRevealButton({
   }
 
   return (
-    <Link href={href} {...hoverHandlers} className={sharedClassName}>
+    <Link
+      href={href}
+      {...hoverHandlers}
+      className={sharedClassName}
+      onClick={(event) => handleInPageAnchorClick(event, href)}
+    >
       {content}
     </Link>
   );

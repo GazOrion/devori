@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geologica } from "next/font/google";
+import { CallbackWidget } from "@/components/ui/callback-widget";
+import { ContactModalProvider } from "@/components/ui/contact-modal-context";
 import { CookieConsentBanner } from "@/components/ui/cookie-consent";
 import { DesktopZoomLock } from "@/components/ui/desktop-zoom-lock";
 import "./globals.css";
@@ -29,9 +31,12 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${geologica.variable} h-full antialiased`}>
       <body className={`${geologica.className} min-h-full flex flex-col font-sans`}>
-        <DesktopZoomLock />
-        {children}
-        <CookieConsentBanner />
+        <ContactModalProvider>
+          <DesktopZoomLock />
+          {children}
+          <CallbackWidget />
+          <CookieConsentBanner />
+        </ContactModalProvider>
       </body>
     </html>
   );

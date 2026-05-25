@@ -11,6 +11,14 @@ import {
   type ProjectTypeId,
 } from "@/components/ui/contact-modal-project-type";
 import { submitContactRequest } from "@/lib/contact-request";
+import {
+  PHONE_MASK_PREFIX,
+  applyPhoneMask,
+  formatRuPhoneMask,
+  getNationalPhoneDigits,
+  isPhoneMaskEmpty,
+  validatePhone,
+} from "@/lib/ru-phone";
 import { cn } from "@/lib/utils";
 
 type ContactModalProps = {
@@ -23,64 +31,9 @@ const inputClassName =
 
 const NAME_PATTERN = /^[\p{L}\s'-]+$/u;
 const MIN_NAME_LENGTH = 2;
-const PHONE_MASK_PREFIX = "+7 (";
-const NATIONAL_PHONE_LENGTH = 10;
 
 function sanitizeName(value: string) {
   return value.replace(/\d/g, "");
-}
-
-function getNationalPhoneDigits(value: string) {
-  let digits = value.replace(/\D/g, "");
-
-  if (digits.startsWith("8")) {
-    digits = `7${digits.slice(1)}`;
-  }
-
-  if (digits.startsWith("7")) {
-    digits = digits.slice(1);
-  }
-
-  return digits.slice(0, NATIONAL_PHONE_LENGTH);
-}
-
-function formatRuPhoneMask(nationalDigits: string) {
-  if (!nationalDigits.length) return "";
-
-  let formatted = PHONE_MASK_PREFIX + nationalDigits.slice(0, 3);
-
-  if (nationalDigits.length < 3) return formatted;
-
-  formatted += ")";
-
-  if (nationalDigits.length > 3) {
-    formatted += ` ${nationalDigits.slice(3, 6)}`;
-  }
-
-  if (nationalDigits.length > 6) {
-    formatted += `-${nationalDigits.slice(6, 8)}`;
-  }
-
-  if (nationalDigits.length > 8) {
-    formatted += `-${nationalDigits.slice(8, 10)}`;
-  }
-
-  return formatted;
-}
-
-function applyPhoneMask(prevPhone: string, nextRaw: string) {
-  const prevDigits = getNationalPhoneDigits(prevPhone);
-  const nextDigits = getNationalPhoneDigits(nextRaw);
-
-  if (
-    nextRaw.length < prevPhone.length &&
-    nextDigits.length === prevDigits.length &&
-    prevDigits.length > 0
-  ) {
-    return formatRuPhoneMask(prevDigits.slice(0, -1));
-  }
-
-  return formatRuPhoneMask(nextDigits);
 }
 
 function validateName(value: string) {
@@ -92,18 +45,6 @@ function validateName(value: string) {
     return "Имя может содержать только буквы, пробелы и дефис";
   }
   return null;
-}
-
-function validatePhone(value: string) {
-  const nationalDigits = getNationalPhoneDigits(value);
-  if (nationalDigits.length < NATIONAL_PHONE_LENGTH) {
-    return "Введите номер полностью";
-  }
-  return null;
-}
-
-function isPhoneMaskEmpty(value: string) {
-  return getNationalPhoneDigits(value).length === 0;
 }
 
 export function ContactModal({ open, onClose }: ContactModalProps) {
@@ -253,18 +194,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.22, ease: "easeOut" }}
                   >
-                    <div className="mb-4 flex items-start justify-between gap-3">
-                      <span className="h-10 w-10 shrink-0" aria-hidden />
-                      <button
-                        type="button"
-                        onClick={onClose}
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.06] text-white/80 transition hover:border-white/22 hover:bg-white/10 hover:text-white"
-                      >
-                        <X className="h-4 w-4" aria-hidden />
-                      </button>
-                    </div>
-
-                    <div className="flex flex-col items-center px-2 pb-1 text-center">
+                    <div className="flex flex-col items-center px-2 pb-1 pt-2 text-center">
                     <motion.div
                       initial={{ scale: 0.85, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}

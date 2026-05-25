@@ -25,6 +25,7 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { TeamMarqueeSection } from "@/components/ui/team-marquee-section";
 import { teamMembers } from "@/data/team-members";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
+import { EcosystemSection } from "@/components/ui/ecosystem-section";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { BusinessTasksSection } from "@/components/ui/business-tasks-section";
 import { SectionGradientDivider } from "@/components/ui/section-gradient-divider";
@@ -32,18 +33,15 @@ import sectionHeading from "@/components/ui/section-heading.module.css";
 import { ProductValueSection } from "@/components/ui/product-value-section";
 import { CtaRevealButton } from "@/components/ui/cta-reveal-button";
 import { ShineHover } from "@/components/ui/shine-hover";
-import { ContactModalProvider, useContactCtaHandler } from "@/components/ui/contact-modal-context";
+import { useContactCtaHandler } from "@/components/ui/contact-modal-context";
 import {
   WorkFormatsPricing,
   type WorkFormatPlan,
 } from "@/components/ui/work-formats-pricing";
+import { zSection } from "@/lib/layer-z-index";
 
 export function DemoOne() {
-  return (
-    <ContactModalProvider>
-      <DemoOneContent />
-    </ContactModalProvider>
-  );
+  return <DemoOneContent />;
 }
 
 function DemoOneContent() {
@@ -285,8 +283,10 @@ function DemoOneContent() {
         ]}
       />
 
-      <div className="relative z-30 -mt-24 overflow-x-hidden overflow-y-visible rounded-t-[3.25rem] bg-[#d8dde5] pb-0 pt-0 md:-mt-32">
-        <section id="services" className="relative z-10 w-full rounded-[3.25rem] bg-[#f4f7ff]">
+      <div
+        className={`relative ${zSection.stackRoot} -mt-24 overflow-x-hidden overflow-y-visible rounded-t-[3.25rem] bg-[#d8dde5] pb-0 pt-0 md:-mt-32`}
+      >
+        <section id="services" className={`relative ${zSection.services} w-full rounded-[3.25rem] bg-[#f4f7ff]`}>
           <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
             <h2 className={`max-w-[46rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
               Услуги и направления
@@ -305,8 +305,10 @@ function DemoOneContent() {
 
         <ProductValueSection />
 
-        <section id="formats" className="relative z-30 -mt-24 w-full rounded-[3.25rem] bg-[#f4f7fb]">
-          <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
+        <section id="formats" className={`relative ${zSection.formats} -mt-24 w-full rounded-[3.25rem] bg-[#f4f7fb]`}>
+          <ScrollReveal
+            className={`mx-auto w-full max-w-[1680px] px-[5vw] pb-40 md:px-[6vw] lg:px-[7vw] ${sectionHeading.lightOverlapTop}`}
+          >
               <h2 className={`max-w-[56rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
                 Подбираем формат работы под срок, бюджет и степень неопределённости
               </h2>
@@ -448,7 +450,7 @@ function DemoOneContent() {
           </ScrollReveal>
         </section>
 
-        <section id="cases" className="relative z-40 -mt-24 w-full rounded-[3.25rem] bg-devori-dark">
+        <section id="cases" className={`relative ${zSection.cases} -mt-24 w-full rounded-[3.25rem] bg-devori-dark`}>
           <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
             <h2 className={`max-w-[46rem] font-heading ${sectionHeading.heading} ${sectionHeading.dark}`}>
               Показываем не просто красивый интерфейс, а то, как он работает на результат
@@ -462,9 +464,11 @@ function DemoOneContent() {
 
         <section
           aria-labelledby="cases-cta-heading"
-          className="relative z-[42] -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]"
+          className={`relative ${zSection.casesCta} -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]`}
         >
-          <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
+          <ScrollReveal
+            className={`mx-auto w-full max-w-[1680px] px-[5vw] pb-40 md:px-[6vw] lg:px-[7vw] ${sectionHeading.lightOverlapTop}`}
+          >
             <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
               <div className="max-w-[46rem]">
                 <h2
@@ -496,27 +500,31 @@ function DemoOneContent() {
 
         <section
           id="approach"
-          className="relative z-50 -mt-24 w-full rounded-[3.25rem] bg-devori-dark"
+          className={`relative ${zSection.approach} -mt-24 w-full rounded-[3.25rem] bg-devori-dark`}
         >
           <div className="mx-auto min-w-0 w-full max-w-[1680px] px-[5vw] pt-24 pb-36 md:px-[6vw] lg:px-[7vw]">
             <ProcessScrollCards items={processItems} />
           </div>
         </section>
 
-        <section id="team" className="relative z-[60] -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]">
-          <div className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
+        <section id="team" className={`relative ${zSection.team} -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]`}>
+          <div
+            className={`mx-auto w-full max-w-[1680px] px-[5vw] pb-40 md:px-[6vw] lg:px-[7vw] ${sectionHeading.lightOverlapTop}`}
+          >
             <TeamMarqueeSection members={teamMembers} />
           </div>
         </section>
 
-        <section id="testimonials" className="relative z-[65] -mt-24 w-full rounded-[3.25rem] bg-devori-dark">
+        <section id="testimonials" className={`relative ${zSection.testimonials} -mt-24 w-full rounded-[3.25rem] bg-devori-dark`}>
           <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
             <TestimonialsSection items={testimonials} variant="dark" />
           </ScrollReveal>
         </section>
 
-        <section className="relative z-[70] -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]">
-          <ScrollReveal className="mx-auto w-full max-w-[1200px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
+        <section className={`relative ${zSection.faq} -mt-24 w-full rounded-[3.25rem] bg-[#f8fbff]`}>
+          <ScrollReveal
+            className={`mx-auto w-full max-w-[1200px] px-[5vw] pb-40 md:px-[6vw] lg:px-[7vw] ${sectionHeading.lightOverlapTop}`}
+          >
             <h2 className={`max-w-[48rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
               Ответы на вопросы, которые чаще всего возникают до старта проекта
             </h2>
@@ -529,7 +537,7 @@ function DemoOneContent() {
 
       <section
         id="contact"
-        className="relative z-[90] -mt-24 w-full overflow-hidden rounded-t-[3.25rem] bg-devori-dark"
+        className={`relative ${zSection.contact} -mt-24 w-full overflow-hidden rounded-[3.25rem] bg-devori-dark`}
       >
         <div
           className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
@@ -556,7 +564,7 @@ function DemoOneContent() {
           aria-hidden
         />
 
-        <ScrollReveal className="relative z-10 mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-12 md:px-[6vw] lg:px-[7vw]">
+        <ScrollReveal className="relative z-10 mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-32 md:px-[6vw] md:pb-40 lg:px-[7vw]">
           <div className="max-w-[38rem]">
             <h2 className={`font-heading ${sectionHeading.heading} ${sectionHeading.dark}`}>
               Расскажите нам о вашей задаче — мы придумаем решение, которое вам понравится
@@ -578,7 +586,14 @@ function DemoOneContent() {
         </ScrollReveal>
       </section>
 
-      <SiteFooter />
+      <section
+        id="ecosystem"
+        className={`relative ${zSection.ecosystem} -mt-24 w-full overflow-hidden rounded-[3.25rem] bg-[#f4f7ff]`}
+      >
+        <EcosystemSection />
+      </section>
+
+      <SiteFooter className={`relative ${zSection.footer} -mt-24 rounded-t-[3.25rem]`} />
     </div>
   );
 }

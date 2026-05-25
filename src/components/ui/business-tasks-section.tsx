@@ -1,5 +1,6 @@
 import { businessTaskRows } from "@/data/business-tasks";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { zSection } from "@/lib/layer-z-index";
 import { cn } from "@/lib/utils";
 import sectionHeading from "./section-heading.module.css";
 import styles from "./business-tasks-section.module.css";
@@ -8,7 +9,7 @@ export function BusinessTasksSection() {
   return (
     <section
       id="business-tasks"
-      className={`relative z-20 -mt-24 w-full rounded-[3.25rem] ${styles.section}`}
+      className={`relative ${zSection.business} -mt-24 w-full rounded-[3.25rem] ${styles.section}`}
     >
       <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] py-28 md:px-[6vw] md:py-32 lg:px-[7vw]">
         <h2 className={`font-heading ${sectionHeading.heading} ${sectionHeading.dark} ${sectionHeading.center}`}>
