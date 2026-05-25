@@ -14,6 +14,11 @@ const geologica = Geologica({
 export const metadata: Metadata = {
   title: "devori",
   description: "Landing page hero for the devori IT company.",
+  icons: {
+    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
