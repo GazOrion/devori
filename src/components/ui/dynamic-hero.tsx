@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { isContactHref, useContactModal } from "@/components/ui/contact-modal-context";
 import { handleInPageAnchorClick } from "@/lib/smooth-scroll";
-import { zFloating } from "@/lib/layer-z-index";
+import { zFloating, zSection } from "@/lib/layer-z-index";
 
 type NavItem = {
   id: string;
@@ -213,7 +213,7 @@ export function HeroSection({
     <div
       id="top"
       ref={rootRef}
-      className={`relative isolate z-20 flex flex-col ${HERO_MIN_HEIGHT} overflow-hidden rounded-b-[3.25rem] bg-background pb-2 text-foreground shadow-[0_28px_90px_rgba(0,0,0,0.38)]`}
+      className={`relative isolate ${zSection.hero} flex flex-col ${HERO_MIN_HEIGHT} overflow-hidden rounded-b-[3.25rem] bg-background pb-2 text-foreground shadow-[0_28px_90px_rgba(0,0,0,0.38)]`}
     >
       <div
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-b-[3.25rem]"

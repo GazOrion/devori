@@ -270,13 +270,6 @@ function DemoOneContent() {
         ]}
         navItems={[
           { id: "services", label: "Услуги", href: "#services" },
-          {
-            id: "interiors",
-            label: "Дизайн интерьеров",
-            href: "/dizayn-intererov",
-            badge: "new",
-            separate: true,
-          },
           { id: "formats", label: "Форматы", href: "#formats" },
           { id: "cases", label: "Кейсы", href: "#cases" },
           { id: "testimonials", label: "Отзывы", href: "#testimonials" },
@@ -287,7 +280,9 @@ function DemoOneContent() {
         className={`relative ${zSection.stackRoot} -mt-24 overflow-x-hidden overflow-y-visible rounded-t-[3.25rem] bg-[#d8dde5] pb-0 pt-0 md:-mt-32`}
       >
         <section id="services" className={`relative ${zSection.services} w-full rounded-[3.25rem] bg-[#f4f7ff]`}>
-          <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
+          <ScrollReveal
+            className={`mx-auto w-full max-w-[1680px] px-[5vw] pb-40 md:px-[6vw] lg:px-[7vw] ${sectionHeading.lightOverlapTop}`}
+          >
             <h2 className={`max-w-[46rem] font-heading ${sectionHeading.heading} ${sectionHeading.light}`}>
               Услуги и направления
             </h2>
@@ -301,7 +296,7 @@ function DemoOneContent() {
 
         <BusinessTasksSection />
 
-        <SectionGradientDivider className="-mt-16" />
+        <SectionGradientDivider />
 
         <ProductValueSection />
 

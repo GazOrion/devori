@@ -9,7 +9,7 @@ export function BusinessTasksSection() {
   return (
     <section
       id="business-tasks"
-      className={`relative ${zSection.business} -mt-24 w-full rounded-[3.25rem] ${styles.section}`}
+      className={`relative ${zSection.business} -mt-24 w-full rounded-t-[3.25rem] rounded-b-none ${styles.section}`}
     >
       <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] py-28 md:px-[6vw] md:py-32 lg:px-[7vw]">
         <h2 className={`font-heading ${sectionHeading.heading} ${sectionHeading.dark} ${sectionHeading.center}`}>

@@ -9,12 +9,12 @@ export function SectionGradientDivider({ className }: SectionGradientDividerProp
   return (
     <div
       className={cn(
-        `relative ${zSection.gradientDivider} flex w-full justify-center bg-[#07030f] py-10`,
+        `relative ${zSection.gradientDivider} flex w-full justify-center bg-[#07030f] px-[5vw] py-8 md:px-[6vw] md:py-10 lg:px-[7vw]`,
         className,
       )}
       aria-hidden
     >
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#66B3FF]/55 to-transparent" />
+      <div className="h-px w-full max-w-[1680px] bg-gradient-to-r from-transparent via-[#66B3FF]/70 to-transparent" />
     </div>
   );
 }

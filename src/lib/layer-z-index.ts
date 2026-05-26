@@ -6,8 +6,10 @@
  */
 
 export const zSection = {
-  stackRoot: "z-[10]",
-  services: "z-[10]",
+  /** Герой ниже основного стека: светлая «Услуги» наезжает сверху, не уходит под тень героя */
+  hero: "z-[8]",
+  stackRoot: "z-[20]",
+  services: "z-[20]",
   business: "z-[12]",
   gradientDivider: "z-[13]",
   productValue: "z-[14]",

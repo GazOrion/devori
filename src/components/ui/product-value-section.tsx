@@ -93,7 +93,7 @@ export function ProductValueSection() {
   return (
     <section
       id="product-value"
-      className={`relative ${zSection.productValue} -mt-24 w-full overflow-hidden rounded-[3.25rem] bg-devori-dark`}
+      className={`relative ${zSection.productValue} w-full overflow-hidden rounded-t-none rounded-b-[3.25rem] bg-devori-dark`}
       aria-labelledby="product-value-heading"
     >
       <ScrollReveal className="relative mx-auto w-full max-w-[1680px] px-[5vw] pt-28 pb-40 md:px-[6vw] lg:px-[7vw]">
