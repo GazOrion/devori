@@ -11,7 +11,7 @@ export function BusinessTasksSection() {
       id="business-tasks"
       className={`relative ${zSection.business} -mt-24 w-full rounded-t-[3.25rem] rounded-b-none ${styles.section}`}
     >
-      <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] py-28 md:px-[6vw] md:py-32 lg:px-[7vw]">
+      <ScrollReveal className="mx-auto w-full max-w-[1680px] px-[5vw] pt-36 pb-14 md:px-[6vw] md:pt-44 md:pb-16 lg:px-[7vw] lg:pt-48 lg:pb-16">
         <h2 className={`font-heading ${sectionHeading.heading} ${sectionHeading.dark} ${sectionHeading.center}`}>
           Реализация любой задачи бизнеса
         </h2>
